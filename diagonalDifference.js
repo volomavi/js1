@@ -5,9 +5,9 @@ function diagonalDifferences (arr) {
 
   for(let i = 0, j = length - 1; i < length; i++, j--){
     sumLeft += arr[i][i];
-    console.log(sumLeft);
+    // console.log(sumLeft);
     sumRight += arr[i][j];
-    console.log(sumRight);
+    // console.log(sumRight);
   }
 
   console.log(Math.abs(sumLeft - sumRight));
