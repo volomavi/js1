@@ -10,7 +10,7 @@ function diagonalDifferences (arr) {
     // console.log(sumRight);
   }
 
-  console.log(Math.abs(sumLeft - sumRight));
+  return(Math.abs(sumLeft - sumRight));
 };
 
 diagonalDifferences([[11, 2, 4], [4, 5, 6], [10, 8, -12]])
