@@ -1,32 +1,35 @@
-// function timeConversion(s) {
-//   let nightTime
-//   let dayTime
-//   if (s.search("PM")) {
-//     nightTime = s.replace('PM', "")
-//     let noonCheck = nightTime.charAt(0)
-//     if (noonCheck = '1') {
-//       console.log(nightTime)
-//     } else {
-//       console.log(nightTime.charAt(0,1))
-//     }
-//     nightTime.charAt(0) = 1
-//     console.log(nightTime)
-//     // console.log(parseInt(noonCheck) + 2)
+function timeConversion(s) {
+  let string = s;
+  let stringArray = string.split(":");
+  let hour = parseInt(stringArray[0]);
+  let minute = parseInt(stringArray[1]);
+  let second = parseInt(stringArray[2]);
 
-//     //if not, then add 12 to the number and return
-//   }
-// }
+  let nightTime;
+  let dayTime;
 
-// timeConversion("12:05:45PM");
+  if (string.search("PM")) {
+    nightTime = string.replace("PM", "");
+    if (hour < 12) {
+      hour += 12;
+    }
+    if (minute < 11) {
+      minute = `0${minute}`;
+    }
 
-const convertFrom12To24Format = (time12) => {
-  const [sHours, minutes, period] = time12
-    .match(/([0-9]{1,2}):([0-9]{2}) (AM|PM)/)
-    .slice(1);
-  const PM = period === "PM";
-  const hours = (+sHours % 12) + (PM ? 12 : 0);
+    if (second < 11) {
+      second = `0${second}`;
+    }
+  }
 
-  return `${("0" + hours).slice(-2)}:${minutes}`;
-};
+  if (string.search("AM")) {
+    dayTime = string.replace("AM", "");
+    if (hour == 12) {
+      hour = "00";
+    }
+  }
+  let answer = `${hour}:${minute}:${second}`;
+  console.log(answer);
+}
 
-convertFrom12To24Format("07:05:45PM");
+timeConversion("07:05:45PM");
